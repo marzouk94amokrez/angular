@@ -1,0 +1,114 @@
+<nav class="navbar navbar-inverse" xmlns="http://www.w3.org/1999/html">
+  <div  class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" >Bibliothèque </a>
+    </div>
+    <ul  class="nav navbar-nav">
+      <li ><a >Chercher</a></li>
+      <li><a >Promotion</a></li>
+  <li  *ngIf="authService.isAdmin()" (click)="click()"><a >ajouter</a></li>
+
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li (click)="onLogout()" > <a><span class="glyphicon glyphicon-user" ></span>Sign Up        </a> </li>
+    </ul>
+  </div>
+</nav>
+
+
+<form (ngSubmit)="onSubmit(f)"  #f="ngForm"  [ngClass]="{'hidden': isHidden}"  class="section-padding wow fadeInUp" class="container" style="background-color: grey;" *ngIf="categori" >
+  <div class="form-group">
+
+    <input type="text" ngModel  name="name"  class="form-control" id="name" placeholder="titre de livre"  ng-required="true" />
+    <div class="validation" ></div>
+  </div>
+  <div class="form-group">
+    <input type="texte" ngModel class="form-control" name="description" id="description" placeholder="la description"   ng-required="ce champe est obligatoire" />
+    <div class="validation" ></div>
+  </div>
+  <div class="form-group" >
+
+    <select  class="form-control"  ng-model="selectedItem" name="cat">
+      <option   value="">--Please choisi la categorie--</option>
+
+      <option *ngFor="let c of categori._embedded.categories"   value="{{c.name}}">{{c.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <select  ngModel id="selected" class="form-control" name="selected"   placeholder="la selection" required>
+    <option value="true">true</option>
+    <option value="false">false</option>
+  </select>
+
+  </div>
+
+  <div class="form-group">
+    <select  ngModel id="promotion" class="form-control" name="selected"   placeholder="la selection">
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+
+  </div>
+
+
+  <div class="form-group">
+    <select ngModel id="availabl" class="form-control" name="availabl"  placeholder="is available">
+      <option value="true">true</option>
+      <option value="false">false</option>
+    </select>
+    <div class="validation"></div>
+  </div>
+
+
+  <div class="text-center"><button type="submit" class="btn btn-primary btn-lg" (click)="click()"> AJOUTER </button></div>
+</form>
+
+
+
+
+
+
+
+
+
+
+<div  class="container">
+
+
+  <div class="col-md-3">
+    <ul class="panel-heading" class="list-group"  *ngIf="categori">
+      <li class="panel-heading" [ngClass]="currentCategorie==c?'active':''"(click)="getProductsByCat(c)" class="list-group-item" *ngFor="let c of categori._embedded.categories">
+        {{c.name}}
+
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+  <div *ngIf="product">
+    <div *ngFor="let c of product._embedded.livres">
+
+<div class="col-md-6">
+        <div class="panel panel-default">
+          <img src="assets/img/livre.png" class="img-responsive">
+
+          <div  class="panel-heading">{{c.name}}</div>
+          <div  class="panel-body">
+            <table>
+              <tr>
+                <td>{{c.description}}
+                </td>
+              </tr>
+              <tr>
+                <td style="color:red" >telecharger
+                </td>
+              </tr>
+            </table>
+
+    </div>
+    </div>
+  </div>
+    </div>
+
+  </div></div></div>
+

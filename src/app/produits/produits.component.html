@@ -1,0 +1,23 @@
+<p>produits works!nnnnnnnnnnn</p>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Liste des produits</div>
+    <div class="panel-body">
+      <button class="btn btn-primary" (click)="onGetProducts()">livre</button>
+    </div>
+    <div class="panel-body">
+      <table *ngIf="produits" class="table table-striped">
+        <tr>
+          <th>ID</th><th>DES</th><th>PRIX</th><th>QTE</th>
+        </tr>
+        <tr *ngFor="let p of produits;let i=index"[attr.data-index]="i">
+        <td>{{p.id}}</td>
+        <td>{{p.designation}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.quantite}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

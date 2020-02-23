@@ -1,0 +1,14 @@
+
+<div class="container">
+  <div class="col-md-3">
+    <ul class="list-group"*ngIf="categori">
+      <li class="list-group-item" *ngFor="let c of categori._embedded.categories">
+        <a (click)="getProductsByCat(c)" >  {{c.name}} </a>
+      </li>
+    </ul>
+  </div>
+
+  <a routerLink="/livre"> livre </a>
+  <div class="col-md-9">
+  </div>
+</div>
