@@ -22,7 +22,7 @@
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^3.4.1",
     "cors": "^2.8.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-extended-pdf-viewer": "^1.8.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
